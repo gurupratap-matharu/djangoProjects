@@ -3,12 +3,18 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse("Hello, world. You're at the polls index.")
+    latest_question_list = Question.objects.order_by('-pub_date')[:5]
+    output = ', '.join([q.question_text for q in latest_question_list])
+    return HttpResponse(output)
 
 
-def papa(request):
-    return HttpResponse("Papa i Miss You!")
+def detail(request, question_id):
+    return HttpResponse("You are looking at question %s." % question_id)
 
 
-def mama(request):
-    return HttpResponse("Mama I love you!")
+def results(request, question_id):
+    return HttpResponse("You are looking at the results of question %s" % question_id)
+
+
+def vote(request, question_id):
+    return HttpResponse("You're voting on question %s." % question_id)
