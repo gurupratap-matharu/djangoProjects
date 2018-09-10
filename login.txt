@@ -1,4 +1,0 @@
-
-
-			Veer, we need to configure git to stop asking us for login
-			again and again.
